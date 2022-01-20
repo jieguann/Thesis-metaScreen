@@ -5,9 +5,6 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 
-#Pay Asset
-Assets/HttpClient
-
 # Visual Studio cache directory
 .vs/
 
