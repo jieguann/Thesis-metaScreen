@@ -62,7 +62,7 @@ function drawDetection(){
     object = detections[i];
 
 
-    if(object.label=="person"){
+    if(object.label=="person" || object.label == "cell phone"){
 
 
       stroke(0, 255, 0);
@@ -74,29 +74,37 @@ function drawDetection(){
       textSize(24);
       text(object.label, object.x + 10, object.y + 24);
 
-      if(object.x < widthC/4+widthC/4 && object.x > widthC/4-widthC/4){
-        // console.log(performance.now());
-        totalSecond++;
-        minutes = Math.floor(totalSecond/3600);
-        seconds = Math.floor((totalSecond - minutes *3600)/60);
-        // milliseconds = totalSecond - (minutes*3600 + seconds*60);
+      if(object.label == "person"){
+        if(object.x < widthC/4+widthC/4 && object.x > widthC/4-widthC/4){
+          // console.log(performance.now());
+          totalSecond++;
+          minutes = Math.floor(totalSecond/3600);
+          seconds = Math.floor((totalSecond - minutes *3600)/60);
+          // milliseconds = totalSecond - (minutes*3600 + seconds*60);
+
+        }
+
+        else{
+          totalSecond = 0;
+          minutes = 0;
+          seconds = 0;
+        }
+      }
+
+      if(object.label == "cell phone"){
+        console.log("cell phone");
 
       }
 
-      else{
-         totalSecond = 0;
-         minutes = 0;
-         seconds = 0;
-      }
-      client.publish('jieThesis/MetaPlant/seconds', seconds.toString(), { qos: 0, retain: false });
-
-      client.publish('jieThesis/MetaPlant/minutes', minutes.toString(), { qos: 0, retain: false });
-
-      client.publish('jieThesis/MetaPlant/totalSecond', totalSecond.toString(), { qos: 0, retain: false });
 
       // console.log(minutes + " " + seconds +" "  + totalSecond);
 
     }
+    client.publish('jieThesis/MetaPlant/seconds', seconds.toString(), { qos: 0, retain: false });
+
+    client.publish('jieThesis/MetaPlant/minutes', minutes.toString(), { qos: 0, retain: false });
+
+    client.publish('jieThesis/MetaPlant/totalSecond', totalSecond.toString(), { qos: 0, retain: false });
 
   }
 

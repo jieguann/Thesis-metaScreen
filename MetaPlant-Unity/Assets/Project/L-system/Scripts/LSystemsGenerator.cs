@@ -29,6 +29,7 @@ public class LSystemsGenerator : MonoBehaviour
     [SerializeField] private GameObject treeParent;
     [SerializeField] private GameObject branch;
     [SerializeField] private GameObject leaf;
+    //[SerializeField] private GameObject dynamicObject;
     [SerializeField] private HUDScript HUD;
 
     private const string axiom = "X";
@@ -201,6 +202,23 @@ public class LSystemsGenerator : MonoBehaviour
                     fLine.GetComponent<LineRenderer>().SetPosition(1, transform.position);
                     fLine.GetComponent<LineRenderer>().startWidth = width;
                     fLine.GetComponent<LineRenderer>().endWidth = width;
+
+                    if(fLine.transform.Find("Sphere") != null)
+                    {
+                        fLine.transform.Find("Sphere").position = initialPosition;
+                    }
+                    /*
+                    if(fLine.transform == leaf.transform)
+                    {
+                        GameObject fObject = Instantiate(dynamicObject, Tree.transform);
+                        fObject.transform.position = initialPosition;
+                    }
+                    */
+
+
+
+
+
                     break;
 
                 case 'X':                
