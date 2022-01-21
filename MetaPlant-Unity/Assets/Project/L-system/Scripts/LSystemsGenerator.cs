@@ -227,27 +227,26 @@ public class LSystemsGenerator : MonoBehaviour
                         fLine.gameObject.SetActive(true);
                         fLineC.position = initialPosition;
 
-                        if (iterations > MAX_GROUWITERACTIONS)
+                        //if (iterations > MAX_GROUWITERACTIONS)
+
+                        float baseScale = 2f;
+                        fLineCScale(1, baseScale);
+                        fLineCScale(2, 2* baseScale);
+                        fLineCScale(3, 3* baseScale);
+                        fLineCScale(4, 4* baseScale);
+                        fLineCScale(5, 5* baseScale);
+                        fLineCScale(6, 6* baseScale);
+                        fLineCScale(7, 7* baseScale);
+                        fLineCScale(8, 8* baseScale);
+                        fLineCScale(9, 9* baseScale);
+                        fLineCScale(10, 10* baseScale);
+
+                        void fLineCScale(int iterations_, float scale)
                         {
-                            if(iterations == 8f)
-                            {
-                                fLineCScale(10f);
-                            }
-                            else if(iterations == 9f)
-                            {
-                                fLineCScale(20f);
-                            }
-                            else
-                            {
-                                fLineCScale(40f);
-                            }
-                           void fLineCScale(float scale)
+                            if (iterations == iterations_)
                             {
                                 fLineC.localScale = new Vector3(scale, scale, scale);
-                            } 
-                           
-                           
-                            
+                            }
                         }
                     }
 

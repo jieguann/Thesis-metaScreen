@@ -21,6 +21,12 @@ let totalSecond = 0;
 let minutes = 0;
 let seconds = 0;
 
+//set cell phone time
+let totalCellPhoneSecond = 0;
+let CellPhoneMinutes = 0;
+let CellPhoneSeconds = 0;
+
+
 function preload() {
   // img = loadImage('dog_cat.jpg');
   detector = ml5.objectDetector('cocossd');
@@ -81,6 +87,7 @@ function drawDetection(){
           minutes = Math.floor(totalSecond/3600);
           seconds = Math.floor((totalSecond - minutes *3600)/60);
           // milliseconds = totalSecond - (minutes*3600 + seconds*60);
+          
 
         }
 
@@ -89,12 +96,29 @@ function drawDetection(){
           minutes = 0;
           seconds = 0;
         }
-      }
 
+        //console.log(minutes + ":" + seconds);
+      }
+      
+
+      //control cell phone value
       if(object.label == "cell phone"){
-        console.log("cell phone");
-
+        totalCellPhoneSecond = 0;
+           
       }
+      
+      else{
+        if(CellPhoneSeconds<3){
+          totalCellPhoneSecond++;
+        }
+        
+        
+      }
+
+      
+      CellPhoneMinutes = Math.floor(totalCellPhoneSecond/3600);
+      CellPhoneSeconds = Math.floor((totalCellPhoneSecond - CellPhoneMinutes *3600)/60);
+      
 
 
       // console.log(minutes + " " + seconds +" "  + totalSecond);
@@ -105,6 +129,10 @@ function drawDetection(){
     client.publish('jieThesis/MetaPlant/minutes', minutes.toString(), { qos: 0, retain: false });
 
     client.publish('jieThesis/MetaPlant/totalSecond', totalSecond.toString(), { qos: 0, retain: false });
+
+    //client.publish('jieThesis/MetaPlant/CellPhoneMinutes', CellPhoneMinutes.toString(), { qos: 0, retain: false });
+    
+    client.publish('jieThesis/MetaPlant/CellPhoneSeconds', CellPhoneSeconds.toString(), { qos: 0, retain: false });
 
   }
 

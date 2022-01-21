@@ -32,6 +32,7 @@ namespace M2MqttUnity.Examples
         public float seconds = 0f;
         public float minutes = 0f;
         public float totalSeconds = 0f;
+        public float cellPhoneSeconds = 0f;
 
 
         public void TestPublish()
@@ -105,6 +106,7 @@ namespace M2MqttUnity.Examples
             client.Subscribe(new string[] { "jieThesis/MetaPlant/seconds" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
             client.Subscribe(new string[] { "jieThesis/MetaPlant/minutes" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
             client.Subscribe(new string[] { "jieThesis/MetaPlant/totalSecond" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "jieThesis/MetaPlant/CellPhoneSeconds" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
 
         }
 
@@ -213,6 +215,14 @@ namespace M2MqttUnity.Examples
                 //print(msg.GetType());
                 totalSeconds = Single.Parse(msg);
                 print("totalSecond: " + totalSeconds);
+            }
+            
+            if (topic == "jieThesis/MetaPlant/CellPhoneSeconds")
+            {
+                //print("1: " + Single.Parse(msg));
+                //print(msg.GetType());
+                cellPhoneSeconds = Single.Parse(msg);
+                print("CellPhoneSeconds: " + cellPhoneSeconds);
             }
 
         }
