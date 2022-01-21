@@ -29,9 +29,9 @@ namespace M2MqttUnity.Examples
         private JsonData Data;
 
          
-        public float seconds = 0f;
-        public float minutes = 0f;
-        public float totalSeconds = 0f;
+        public float seconds;
+        public float minutes;
+        public float totalSeconds;
 
 
         public void TestPublish()

@@ -201,6 +201,26 @@ public class LSystemsGenerator : MonoBehaviour
                     fLine.GetComponent<LineRenderer>().SetPosition(1, transform.position);
                     fLine.GetComponent<LineRenderer>().startWidth = width;
                     fLine.GetComponent<LineRenderer>().endWidth = width;
+<<<<<<< HEAD
+=======
+
+                    if(fLine.transform.Find("Sphere") != null)
+                    {
+                        fLine.transform.Find("Sphere").position = initialPosition;
+                    }
+                    /*
+                    if(fLine.transform == leaf.transform)
+                    {
+                        GameObject fObject = Instantiate(dynamicObject, Tree.transform);
+                        fObject.transform.position = initialPosition;
+                    }
+                    */
+
+
+
+
+
+>>>>>>> parent of 517fad5 (add mqtt control iteraction)
                     break;
 
                 case 'X':                
