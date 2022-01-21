@@ -15,7 +15,8 @@ using System;
 public class LSystemsGenerator : MonoBehaviour
 {
     public static int NUM_OF_TREES = 8;
-    public static int MAX_ITERATIONS = 7;
+    public static int MAX_ITERATIONS = 10;
+    public static int MAX_GROUWITERACTIONS = 7;
 
     public int title = 1;
     public int iterations = 4;
@@ -175,16 +176,33 @@ public class LSystemsGenerator : MonoBehaviour
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < iterations; i++)
+        if(iterations <= MAX_GROUWITERACTIONS)
         {
-            foreach (char c in currentString)
+            for (int i = 0; i < iterations; i++)
             {
-                sb.Append(rules.ContainsKey(c) ? rules[c] : c.ToString());
-            }
+                foreach (char c in currentString)
+                {
+                    sb.Append(rules.ContainsKey(c) ? rules[c] : c.ToString());
+                }
 
-            currentString = sb.ToString();
-            sb = new StringBuilder();
+                currentString = sb.ToString();
+                sb = new StringBuilder();
+            }
         }
+        else
+        {
+            for (int i = 0; i < MAX_GROUWITERACTIONS; i++)
+            {
+                foreach (char c in currentString)
+                {
+                    sb.Append(rules.ContainsKey(c) ? rules[c] : c.ToString());
+                }
+
+                currentString = sb.ToString();
+                sb = new StringBuilder();
+            }
+        }
+        
 
         Debug.Log(currentString);
         
@@ -203,10 +221,39 @@ public class LSystemsGenerator : MonoBehaviour
                     fLine.GetComponent<LineRenderer>().startWidth = width;
                     fLine.GetComponent<LineRenderer>().endWidth = width;
 
-                    if(fLine.transform.Find("Sphere") != null)
+                    var fLineC = fLine.transform.Find("Sphere");
+                    if (fLineC != null)
                     {
-                        fLine.transform.Find("Sphere").position = initialPosition;
+                        fLine.gameObject.SetActive(true);
+                        fLineC.position = initialPosition;
+
+                        if (iterations > MAX_GROUWITERACTIONS)
+                        {
+                            if(iterations == 8f)
+                            {
+                                fLineCScale(10f);
+                            }
+                            else if(iterations == 9f)
+                            {
+                                fLineCScale(20f);
+                            }
+                            else
+                            {
+                                fLineCScale(40f);
+                            }
+                           void fLineCScale(float scale)
+                            {
+                                fLineC.localScale = new Vector3(scale, scale, scale);
+                            } 
+                           
+                           
+                            
+                        }
                     }
+
+                    
+                    
+                    
                     /*
                     if(fLine.transform == leaf.transform)
                     {
