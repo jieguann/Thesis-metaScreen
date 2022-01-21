@@ -11,15 +11,13 @@ public class TreeControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        TreeSpawner.title = 6;
         
     }
 
     // Update is called once per frame
     void Update()
-    {
-        TreeSpawner.title = 6;
-        if ((int)MQTT.minutes == 0)
+    {   if((int)MQTT.minutes == 0)
         {
             TreeSpawner.iterations = 1;
         }
