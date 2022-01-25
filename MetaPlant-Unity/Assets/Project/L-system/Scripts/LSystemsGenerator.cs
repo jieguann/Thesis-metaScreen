@@ -16,7 +16,7 @@ public class LSystemsGenerator : MonoBehaviour
 {
     public static int NUM_OF_TREES = 8;
     public static int MAX_ITERATIONS = 10;
-    public static int MAX_GROUWITERACTIONS = 7;
+    public int MAX_GROUWITERACTIONS = 7;
 
     public float baseScale = 0.1f;
     public int title = 1;
