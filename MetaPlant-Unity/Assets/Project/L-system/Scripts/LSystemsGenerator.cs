@@ -235,7 +235,7 @@ public class LSystemsGenerator : MonoBehaviour
 
                         
                         fLineCScale(iterations*baseScale);
-                        particleControl();
+                        particleControl(iterations * baseScale * 5f);
                         /*
                         fLineCScale(2, 2* baseScale);
                         fLineCScale(3, 3* baseScale);
@@ -253,11 +253,16 @@ public class LSystemsGenerator : MonoBehaviour
 
                         }
 
-                        void particleControl()
+                        void particleControl(float scale)
                         {
                             if (iterations > 5)
                             {
                                 fireParticles.SetActive(true);
+                                fireParticles.transform.localScale = new Vector3(scale, scale, scale);
+                            }
+                            else
+                            {
+                                fireParticles.SetActive(false);
                             }
                         }
                     }
