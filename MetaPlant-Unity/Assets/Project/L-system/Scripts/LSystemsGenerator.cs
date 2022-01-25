@@ -33,6 +33,7 @@ public class LSystemsGenerator : MonoBehaviour
     [SerializeField] private GameObject branch;
     [SerializeField] private GameObject leaf;
     [SerializeField] private GameObject fireParticles;
+    [SerializeField] private GameObject rainEffectParticles;
     //[SerializeField] private GameObject dynamicObject;
     [SerializeField] private HUDScript HUD;
 
@@ -255,14 +256,21 @@ public class LSystemsGenerator : MonoBehaviour
 
                         void particleControl(float scale)
                         {
-                            if (iterations > 5)
+                            if (iterations > 6 && iterations <9)
                             {
                                 fireParticles.SetActive(true);
                                 fireParticles.transform.localScale = new Vector3(scale, scale, scale);
+                                rainEffectParticles.SetActive(false);
+                            }
+                            else if(iterations >= 9)
+                            {
+                                rainEffectParticles.SetActive(true);
                             }
                             else
                             {
                                 fireParticles.SetActive(false);
+                                rainEffectParticles.SetActive(false);
+                                
                             }
                         }
                     }
