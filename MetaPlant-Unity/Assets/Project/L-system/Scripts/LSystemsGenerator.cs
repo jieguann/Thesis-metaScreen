@@ -28,10 +28,11 @@ public class LSystemsGenerator : MonoBehaviour
     public bool hasTreeChanged = false;
     public GameObject Tree = null;
     public float treeSize;
-
+    
     [SerializeField] private GameObject treeParent;
     [SerializeField] private GameObject branch;
     [SerializeField] private GameObject leaf;
+    [SerializeField] private GameObject fireParticles;
     //[SerializeField] private GameObject dynamicObject;
     [SerializeField] private HUDScript HUD;
 
@@ -233,7 +234,9 @@ public class LSystemsGenerator : MonoBehaviour
                         //if (iterations > MAX_GROUWITERACTIONS)
 
                         
-                        fLineCScale(1, baseScale);
+                        fLineCScale(iterations*baseScale);
+                        particleControl();
+                        /*
                         fLineCScale(2, 2* baseScale);
                         fLineCScale(3, 3* baseScale);
                         fLineCScale(4, 4* baseScale);
@@ -243,12 +246,18 @@ public class LSystemsGenerator : MonoBehaviour
                         fLineCScale(8, 8* baseScale);
                         fLineCScale(9, 9* baseScale);
                         fLineCScale(10, 10* baseScale);
-
-                        void fLineCScale(int iterations_, float scale)
+                        */
+                        void fLineCScale(float scale)
                         {
-                            if (iterations == iterations_)
+                            fLineC.localScale = new Vector3(scale, scale, scale);
+
+                        }
+
+                        void particleControl()
+                        {
+                            if (iterations > 5)
                             {
-                                fLineC.localScale = new Vector3(scale, scale, scale);
+                                fireParticles.SetActive(true);
                             }
                         }
                     }
@@ -268,7 +277,7 @@ public class LSystemsGenerator : MonoBehaviour
 
 
 
-                    break;
+                            break;
 
                 case 'X':                
                     break;
