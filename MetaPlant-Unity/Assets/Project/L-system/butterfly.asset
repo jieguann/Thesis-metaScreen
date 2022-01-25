@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  weight: 1
+  weight: 0.59
   useTagFilter: 1
   filterTags:
   - Forager
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  weight: 0.5
+  weight: 1.67
   useTagFilter: 1
   filterTags:
   - Food
