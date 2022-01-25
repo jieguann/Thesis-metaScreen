@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class DemoTargetMover : MonoBehaviour
 {
-    public Transform[] positions;
-    public float moveTime = 5f;
+    public Transform headPosition;
+    public Transform treePosition;
+    //public float moveTime = 5f;
 
-    private float time;
-    private int positionIndex;
-
+    //private float time;
+    //private int positionIndex;
+    [SerializeField] private M2MqttUnity.Examples.MQTTTest MQTT;
     private void Start()
     {
-        if (positions.Length == 0)
-        {
-            enabled = false;
-            return;
-        }
-        MoveToPosition(0);
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if (time >= moveTime)
+        if(MQTT.cellPhoneSeconds > 2f)
         {
-            MoveToPosition(positionIndex + 1);
-            time = 0;
+            transform.position = treePosition.position;
         }
+        else
+        {
+            
+            transform.position = headPosition.position;
+        }
+        //print(MQTT.cellPhoneSeconds);
     }
-
+    /*
     void MoveToPosition(int posIndex)
     {
         if (posIndex >= positions.Length) posIndex = 0;
@@ -41,4 +42,5 @@ public class DemoTargetMover : MonoBehaviour
             transform.position = positions[posIndex].position;
         }
     }
+    */
 }
