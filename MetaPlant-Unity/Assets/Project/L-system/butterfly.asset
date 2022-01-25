@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  weight: 0.59
+  weight: 1
   useTagFilter: 1
   filterTags:
   - Forager
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  weight: 1.67
+  weight: 1
   useTagFilter: 1
   filterTags:
   - Food
@@ -68,7 +68,7 @@ MonoBehaviour:
   debugDrawSteering: 0
   debugDrawProperties: 0
   foldout: 1
-  effectiveRadius: 200
+  effectiveRadius: 20.26
   fieldOfView: 360
   globalTagSearch: 1
 --- !u!114 &-2896304334565910821
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81d4f1c37cfb9b4696d982df08a7441, type: 3}
   m_Name: butterfly
   m_EditorClassIdentifier: 
-  maxForce: 20
+  maxForce: 30
   maxSpeed: 30
   containmentBehavior: {fileID: -5017359951189961272}
   behaviors:
