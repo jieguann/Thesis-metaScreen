@@ -18,6 +18,7 @@ public class LSystemsGenerator : MonoBehaviour
     public static int MAX_ITERATIONS = 10;
     public static int MAX_GROUWITERACTIONS = 7;
 
+    public float baseScale = 0.1f;
     public int title = 1;
     public int iterations = 4;
     public float angle = 30f;
@@ -229,7 +230,7 @@ public class LSystemsGenerator : MonoBehaviour
 
                         //if (iterations > MAX_GROUWITERACTIONS)
 
-                        float baseScale = 2f;
+                        
                         fLineCScale(1, baseScale);
                         fLineCScale(2, 2* baseScale);
                         fLineCScale(3, 3* baseScale);
