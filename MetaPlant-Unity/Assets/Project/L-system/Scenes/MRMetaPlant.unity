@@ -6318,6 +6318,10 @@ PrefabInstance:
       propertyPath: dynamicObject
       value: 
       objectReference: {fileID: 3830524043988302571, guid: bff8bc43ada06404ba2bfc1c09e63401, type: 3}
+    - target: {fileID: 114311352196235728, guid: 53be443600a798f45ad13664b1e8df94, type: 3}
+      propertyPath: MAX_GROUWITERACTIONS
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114579507275485234, guid: 53be443600a798f45ad13664b1e8df94, type: 3}
     - {fileID: 114771544086927458, guid: 53be443600a798f45ad13664b1e8df94, type: 3}
