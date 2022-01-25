@@ -27,6 +27,7 @@ public class LSystemsGenerator : MonoBehaviour
     public float variance = 10f;
     public bool hasTreeChanged = false;
     public GameObject Tree = null;
+    public float treeSize;
 
     [SerializeField] private GameObject treeParent;
     [SerializeField] private GameObject branch;
@@ -172,6 +173,7 @@ public class LSystemsGenerator : MonoBehaviour
         Destroy(Tree);
 
         Tree = Instantiate(treeParent);
+        Tree.transform.localScale = new Vector3(treeSize, treeSize, treeSize);
 
         currentString = axiom;
 

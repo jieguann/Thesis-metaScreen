@@ -6,7 +6,7 @@ public class TreeControl : MonoBehaviour
 {
     [SerializeField] private LSystemsGenerator TreeSpawner;
     [SerializeField] private M2MqttUnity.Examples.MQTTTest MQTT;
-
+    public int treeTitle;
 
     // Start is called before the first frame update
     private void Awake()
@@ -42,7 +42,7 @@ public class TreeControl : MonoBehaviour
        
         yield return new WaitForSeconds(1);
 
-        TreeSpawner.title = 6;
+        TreeSpawner.title = treeTitle;
     }
 }
 
