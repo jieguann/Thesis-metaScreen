@@ -79,7 +79,8 @@ function drawDetection(){
       fill(255);
       textSize(24);
       text(object.label, object.x + 10, object.y + 24);
-
+      
+      text(object.label, object.x + 10, object.y + 24);
       if(object.label == "person"){
         if(object.x < widthC/4+widthC/4 && object.x > widthC/4-widthC/4){
           // console.log(performance.now());
@@ -87,7 +88,7 @@ function drawDetection(){
           minutes = Math.floor(totalSecond/3600);
           seconds = Math.floor((totalSecond - minutes *3600)/60);
           // milliseconds = totalSecond - (minutes*3600 + seconds*60);
-          
+          text(minutes + ":" + seconds, 190,50);
 
         }
 
