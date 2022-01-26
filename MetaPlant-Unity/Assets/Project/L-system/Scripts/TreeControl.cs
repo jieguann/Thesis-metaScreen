@@ -31,15 +31,17 @@ public class TreeControl : MonoBehaviour
         {
             TreeSpawner.iterations = (int)MQTT.minutes;
         }
+
+
         for (int i = 0; i < butterFly.Count; i++)
         {
             if (MQTT.totalSeconds > 0)
             {
-                butterFly[butterFly.Count].SetActive(false);
+                butterFly[i].SetActive(false);
             }
             else
             {
-                butterFly[butterFly.Count].SetActive(true);
+                butterFly[i].SetActive(true);
             }
         }
         
