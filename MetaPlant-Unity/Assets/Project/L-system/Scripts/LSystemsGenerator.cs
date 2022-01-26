@@ -34,6 +34,9 @@ public class LSystemsGenerator : MonoBehaviour
     [SerializeField] private GameObject leaf;
     [SerializeField] private GameObject fireParticles;
     [SerializeField] private GameObject rainEffectParticles;
+    [SerializeField] private GameObject otherEffectParticles;
+    
+    public LightControl control;
     //[SerializeField] private GameObject dynamicObject;
     [SerializeField] private HUDScript HUD;
 
@@ -75,7 +78,7 @@ public class LSystemsGenerator : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
         if (HUD.hasGenerateBeenPressed || Input.GetKeyDown(KeyCode.G))
         {
             ResetRandomValues();
@@ -168,6 +171,8 @@ public class LSystemsGenerator : MonoBehaviour
             Generate();
         }
 
+        
+
     }
 
     private void  Generate()
@@ -256,21 +261,29 @@ public class LSystemsGenerator : MonoBehaviour
 
                         void particleControl(float scale)
                         {
-                            if (iterations > 6 && iterations <9)
+                            if (iterations > 5 && iterations <9)
                             {
                                 fireParticles.SetActive(true);
                                 fireParticles.transform.localScale = new Vector3(scale, scale, scale);
                                 rainEffectParticles.SetActive(false);
+                                otherEffectParticles.SetActive(false);
+
+                                //control.updateLight(0.7109f, 0.4231f);
+                                //control.HttpPutLight(0.7109f, 0.4231f);
                             }
                             else if(iterations >= 9)
                             {
                                 rainEffectParticles.SetActive(true);
+                                fireParticles.SetActive(false);
+                                otherEffectParticles.SetActive(false);
+                                //control.HttpPutLight(0f, 0f);
                             }
                             else
                             {
                                 fireParticles.SetActive(false);
                                 rainEffectParticles.SetActive(false);
-                                
+                                otherEffectParticles.SetActive(true);
+
                             }
                         }
                     }

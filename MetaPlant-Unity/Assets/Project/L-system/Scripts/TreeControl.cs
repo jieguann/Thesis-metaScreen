@@ -7,6 +7,7 @@ public class TreeControl : MonoBehaviour
     [SerializeField] private LSystemsGenerator TreeSpawner;
     [SerializeField] private M2MqttUnity.Examples.MQTTTest MQTT;
     public int treeTitle;
+    public List<GameObject> butterFly;
 
     // Start is called before the first frame update
     private void Awake()
@@ -30,6 +31,18 @@ public class TreeControl : MonoBehaviour
         {
             TreeSpawner.iterations = (int)MQTT.minutes;
         }
+        for (int i = 0; i < butterFly.Count; i++)
+        {
+            if (MQTT.totalSeconds > 0)
+            {
+                butterFly[butterFly.Count].SetActive(false);
+            }
+            else
+            {
+                butterFly[butterFly.Count].SetActive(true);
+            }
+        }
+        
         
         print((int)MQTT.minutes);
     }

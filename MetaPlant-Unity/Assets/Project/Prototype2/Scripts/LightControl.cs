@@ -13,13 +13,13 @@ public class LightControl : MonoBehaviour
         public float[] xy;
         
     }
-    LightJson lightControl = new LightJson();
-    public ColorPicker picker;
+    LightJson lightControlValue = new LightJson();
+    //public ColorPicker picker;
     //public Transform objectValue;
     // Start is called before the first frame update
     void Start()
     {
-        lightControl.xy = new float[2];
+        lightControlValue.xy = new float[2];
         //StartCoroutine(HttpPutLight());
         //updateLight();
         //lightControl.bri = (int)objectValue.position.y;
@@ -61,17 +61,20 @@ public class LightControl : MonoBehaviour
         */
 
             //yield return new WaitUntil(() => b == true);
-            lightControl.xy[0] = x;
-            lightControl.xy[1] = y;
-            lightControl.bri = 100;
-            updateLight();
+            lightControlValue.xy[0] = x;
+            lightControlValue.xy[1] = y;
+            lightControlValue.bri = 100;
+            updateLight(x,y);
             //picker.b = false;
         
             yield return null;
     }
 
-    void updateLight()
+    public void updateLight(float x, float y)
     {
+        lightControlValue.xy[0] = x;
+        lightControlValue.xy[1] = y;
+        lightControlValue.bri = 100;
         httpPostLight("http://192.168.2.49/api/zx9NNIegikmyEgZZOQmR-FTTzTomumRr4nzjyoWc/lights/4/state");
         httpPostLight("http://192.168.2.49/api/zx9NNIegikmyEgZZOQmR-FTTzTomumRr4nzjyoWc/lights/3/state");
         httpPostLight("http://192.168.2.49/api/zx9NNIegikmyEgZZOQmR-FTTzTomumRr4nzjyoWc/lights/2/state");
@@ -106,7 +109,7 @@ public class LightControl : MonoBehaviour
     public void httpPostLight(string url)
     {
         var client = new HttpClient();
-        string json = JsonUtility.ToJson(lightControl);
+        string json = JsonUtility.ToJson(lightControlValue);
         var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
         client.Put(new Uri(url), content, HttpCompletionOption.AllResponseContent, r =>
         {   // This callback is raised when the request completes
