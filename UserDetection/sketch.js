@@ -91,29 +91,21 @@ function drawDetection(){
           text(minutes + ":" + seconds, 190,50);
 
         }
-
         else{
           totalSecond = 0;
           minutes = 0;
           seconds = 0;
         }
-
         //console.log(minutes + ":" + seconds);
       }
-      
-
       //control cell phone value
       if(object.label == "cell phone"){
         totalCellPhoneSecond = 0;
-           
       }
-      
       else{
         if(CellPhoneSeconds<3){
           totalCellPhoneSecond++;
         }
-        
-        
       }
 
       
