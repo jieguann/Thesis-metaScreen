@@ -89,15 +89,19 @@ function drawDetection(){
           seconds = Math.floor((totalSecond - minutes *3600)/60);
           // milliseconds = totalSecond - (minutes*3600 + seconds*60);
           text(minutes + ":" + seconds, 190,50);
+          //client.publish('jieThesis/Meta/seconds', seconds.toString(), { qos: 0, retain: false });
 
         }
         else{
           totalSecond = 0;
           minutes = 0;
           seconds = 0;
+          //client.publish('jieThesis/Meta/seconds', seconds.toString(), { qos: 0, retain: false });
         }
         //console.log(minutes + ":" + seconds);
       }
+
+      
       //control cell phone value
       if(object.label == "cell phone"){
         totalCellPhoneSecond = 0;
@@ -117,15 +121,17 @@ function drawDetection(){
       // console.log(minutes + " " + seconds +" "  + totalSecond);
 
     }
-    client.publish('jieThesis/MetaPlant/seconds', seconds.toString(), { qos: 0, retain: false });
 
-    client.publish('jieThesis/MetaPlant/minutes', minutes.toString(), { qos: 0, retain: false });
+    
+    client.publish('jieThesis/MetaScreen/BulbTouched', seconds.toString(), { qos: 0, retain: false });
 
-    client.publish('jieThesis/MetaPlant/totalSecond', totalSecond.toString(), { qos: 0, retain: false });
+    //client.publish('jieThesis/Meta/minutes', minutes.toString(), { qos: 0, retain: false });
+
+    //client.publish('jieThesis/MetaPlant/totalSecond', totalSecond.toString(), { qos: 0, retain: false });
 
     //client.publish('jieThesis/MetaPlant/CellPhoneMinutes', CellPhoneMinutes.toString(), { qos: 0, retain: false });
     
-    client.publish('jieThesis/MetaPlant/CellPhoneSeconds', CellPhoneSeconds.toString(), { qos: 0, retain: false });
+    //client.publish('jieThesis/MetaPlant/CellPhoneSeconds', CellPhoneSeconds.toString(), { qos: 0, retain: false });
 
   }
 
@@ -148,7 +154,8 @@ function drawDetection(){
 const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
 
 // const host = 'wss://mqtt.eclipseprojects.io:443/mqtt'
-const host = 'ws://134.122.33.147:9001/mqtt'
+//const host = 'ws://134.122.33.147:9001/mqtt'
+const host = 'wss://mqtt.eclipseprojects.io:443/mqtt'
 
 console.log('Connecting mqtt client')
 const client = mqtt.connect(host)
@@ -156,6 +163,15 @@ const client = mqtt.connect(host)
 client.on('error', (err) => {
 console.log('Connection error: ', err)
 client.end()
+})
+
+client.on('connect', function () {
+  console.log('Connected')
+  client.subscribe('jieThesis/MetaScreen/BulbTouched', function (err) {
+    if (err) {
+      //client.publish('jieThesis/MetaPlant/seconds', 'Hello mqtt')
+    }
+  })
 })
 
 client.on('reconnect', () => {

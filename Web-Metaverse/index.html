@@ -1,0 +1,43 @@
+<!-- bulb
+https://sketchfab.com/3d-models/my-room-109790fce06a4ff3b4b96c2c2cfcc33e#download
+https://sketchfab.com/3d-models/my-room-109790fce06a4ff3b4b96c2c2cfcc33e-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script> 
+    <script src="aframe.js"></script>
+    <link rel="stylesheet" href="aframe.css">
+    
+</head>
+<body>
+
+    <div class="container">
+    <!-- <img src="assets/Bulb.svg" alt=""> -->
+    <a-scene embedded>
+        <!-- <a-entity position="0 3 -4" light-change=></a-entity> -->
+        <a-assets>
+            <a-asset-item id="bulb" src="assets/led_lightbulb/scene.gltf"></a-asset-item>
+            <a-asset-item id="couch" src="assets/my_room/scene.gltf"></a-asset-item>
+          </a-assets>
+        
+        <a-entity gltf-model="#bulb" position="0 4 -17" scale='12 12 12' light="type:ambient; intensity:0.4; color:white" bulb-light="intensity:1"></a-entity>
+        
+        <a-entity gltf-model="#couch" position="-2 -7 -18" rotation="0 -45 0" scale='1 1 1'></a-entity>
+        
+        <a-sky color="black"></a-sky>
+        <a-camera><a-cursor></a-cursor></a-camera>
+        
+
+      </a-scene>
+     </div>
+      
+</body>
+</html>
+
+

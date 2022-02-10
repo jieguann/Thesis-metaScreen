@@ -1,0 +1,17 @@
+a-scene{
+    height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    position:relative;
+}
+
+img{
+    position:absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    width: 500px;
+    height: 500px;
+}

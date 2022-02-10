@@ -1,0 +1,11 @@
+Model Information:
+* title:	LED Lightbulb
+* source:	https://sketchfab.com/3d-models/led-lightbulb-ca4c2ca3ed354ec8b30bb8caa91b53a6
+* author:	kwstasg (https://sketchfab.com/kwstasg)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "LED Lightbulb" (https://sketchfab.com/3d-models/led-lightbulb-ca4c2ca3ed354ec8b30bb8caa91b53a6) by kwstasg (https://sketchfab.com/kwstasg) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
