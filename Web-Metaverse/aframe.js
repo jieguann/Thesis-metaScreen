@@ -36,6 +36,8 @@ AFRAME.registerComponent('bulb-light', {
         el.setAttribute('light', {color:'yellow'});
         //el.setAttribute('light', {intensity: 1});
         lightControl(240,0.39, 0.47);
+        client.publish('jieThesis/MetaScreen/PhilipHue', JSON.stringify({"bri":240, 'x':0.39, 'y':0.47}), { qos: 0, retain: false });
+        //client.publish('jieThesis/Meta/seconds', seconds.toString(), { qos: 0, retain: false });
         
  });
       
@@ -45,6 +47,7 @@ AFRAME.registerComponent('bulb-light', {
         //el.setAttribute('light', {intensity: defaultLight});
         el.setAttribute('light', {color:'white'});
         lightControl(200, 0.31, 0.32);
+        client.publish('jieThesis/MetaScreen/PhilipHue',JSON.stringify({"bri":200, 'x':0.31, 'y':0.32}), { qos: 0, retain: false });
         
       });
 
@@ -87,8 +90,7 @@ AFRAME.registerComponent('bulb-light', {
 
  //Code for MQTT
 const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
-
-const host = 'wss://mqtt.eclipseprojects.io:443/mqtt'
+const host = 'wss://test.mosquitto.org:8081/mqtt'
 //const host = 'ws://134.122.33.147:9001/mqtt'
 
 console.log('Connecting mqtt client')

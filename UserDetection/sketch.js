@@ -13,6 +13,8 @@ let detector;
 let detections = [];
 let object;
 
+let lightJSON
+
 const widthC = 680;
 const heightC = 480;
 
@@ -155,7 +157,8 @@ const clientId = 'mqttjs_' + Math.random().toString(16).substr(2, 8)
 
 // const host = 'wss://mqtt.eclipseprojects.io:443/mqtt'
 //const host = 'ws://134.122.33.147:9001/mqtt'
-const host = 'wss://mqtt.eclipseprojects.io:443/mqtt'
+//const host = 'wss://mqtt.eclipseprojects.io:443/mqtt'
+const host = 'wss://test.mosquitto.org:8081/mqtt'
 
 console.log('Connecting mqtt client')
 const client = mqtt.connect(host)
@@ -167,9 +170,9 @@ client.end()
 
 client.on('connect', function () {
   console.log('Connected')
-  client.subscribe('jieThesis/MetaScreen/BulbTouched', function (err) {
+  client.subscribe('jieThesis/MetaScreen/PhilipHue', function (err) {
     if (err) {
-      //client.publish('jieThesis/MetaPlant/seconds', 'Hello mqtt')
+      client.publish('jieThesis/MetaScreen/PhilipHue', 'Hello mqtt')
     }
   })
 })
@@ -179,7 +182,9 @@ console.log('Reconnecting...')
 })
 
 client.on('message', (topic, message, packet) => {
-  console.log('Received Message: ' + message.toString() + '\nOn topic: ' + topic)
+  //console.log('Received Message: ' + JSON.parse(message.toString()) + '\nOn topic: ' + topic)
+  //lightJSON = JSON.parse(message.toString());
+
 })
 
 
