@@ -35,7 +35,7 @@ AFRAME.registerComponent('bulb-light', {
       el.addEventListener('mouseenter', function () {
         el.setAttribute('light', {color:'yellow'});
         //el.setAttribute('light', {intensity: 1});
-        lightControl(240);
+        lightControl(240,0.39, 0.47);
         
  });
       
@@ -44,7 +44,7 @@ AFRAME.registerComponent('bulb-light', {
         //el.setAttribute('color', defaultColor);
         //el.setAttribute('light', {intensity: defaultLight});
         el.setAttribute('light', {color:'white'});
-        lightControl(2);
+        lightControl(200, 0.31, 0.32);
         
       });
 
@@ -57,11 +57,12 @@ AFRAME.registerComponent('bulb-light', {
   })
 
 
-  const lightControl = (bri) =>{
+  const lightControl = (bri,x,y) =>{
     const requestOptions = {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({"bri": bri, "xy": [1, 1]})
+      //body: JSON.stringify({"bri": bri, "xy": [0.31, 0.32]})
+      body: JSON.stringify({"bri": bri, "xy": [x, y]})
   };
   fetch('http://192.168.2.49/api/zx9NNIegikmyEgZZOQmR-FTTzTomumRr4nzjyoWc/lights/4/state', requestOptions)
       .then(async response => {
@@ -75,10 +76,10 @@ AFRAME.registerComponent('bulb-light', {
               return Promise.reject(error);
           }
   
-          element.innerHTML = data.updatedAt;
+          //element.innerHTML = data.updatedAt;
       })
       .catch(error => {
-          element.parentElement.innerHTML = `Error: ${error}`;
+          //element.parentElement.innerHTML = `Error: ${error}`;
           console.error('There was an error!', error);
       });
   }
